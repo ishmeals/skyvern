@@ -52,8 +52,9 @@ class BrowserContextFactory:
     def build_browser_args() -> dict[str, Any]:
         video_dir = f"{SettingsManager.get_settings().VIDEO_PATH}/{datetime.utcnow().strftime('%Y-%m-%d')}"
         har_dir = f"{SettingsManager.get_settings().HAR_PATH}/{datetime.utcnow().strftime('%Y-%m-%d')}/{BrowserContextFactory.get_subdir()}.har"
+
         return {
-            "user_data_dir": tempfile.mkdtemp(prefix="skyvern_browser_"),
+            "user_data_dir": "/data/browser",
             "locale": SettingsManager.get_settings().BROWSER_LOCALE,
             "timezone_id": SettingsManager.get_settings().BROWSER_TIMEZONE,
             "args": [

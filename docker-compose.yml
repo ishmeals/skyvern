@@ -21,7 +21,8 @@ services:
       retries: 5
 
   skyvern:
-    image: public.ecr.aws/skyvern/skyvern:latest
+    build: .
+    # image: public.ecr.aws/skyvern/skyvern:latest
     restart: on-failure
     # comment out if you want to externally call skyvern API
     ports:
@@ -30,12 +31,13 @@ services:
       - ./artifacts:/data/artifacts
       - ./videos:/data/videos
       - ./har:/data/har
+      - ./browser:/data/browser
       - ./.streamlit:/app/.streamlit
     environment:
       - DATABASE_STRING=postgresql+psycopg://skyvern:skyvern@postgres:5432/skyvern
       - BROWSER_TYPE=chromium-headful
       - ENABLE_OPENAI=true
-      - OPENAI_API_KEY=<your_openai_key>
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
       # If you want to use other LLM provider, like azure and anthropic:
       # - ENABLE_ANTHROPIC=true
       # - LLM_KEY=ANTHROPIC_CLAUDE3_OPUS

@@ -10,7 +10,7 @@ KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjQ4NjA3MTIzODksInN1YiI6Im9fMj
 curl -X POST -H 'Content-Type: application/json' -H "x-api-key: ${KEY}" -d '{
     "url": "https://google.com",
     "webhook_callback_url": "",
-    "navigation_goal": "Test. Just report completed",
+    "navigation_goal": "This is a test. Do not do anything. Just report completed",
     "data_extraction_goal": "",
     "navigation_payload": "",
     "proxy_location": "NONE"
@@ -33,3 +33,6 @@ curl -X POST -H 'Content-Type: application/json' -H "x-api-key: ${KEY}" -d '{
 #     "navigation_payload": "",
 #     "proxy_location": "NONE"
 # }' http://0.0.0.0:8000/api/v1/tasks
+
+# TODO:
+# - disable video

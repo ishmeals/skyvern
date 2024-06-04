@@ -7,8 +7,6 @@ set -e
 alembic upgrade head
 alembic check
 
-chown -R root /data/browser
-
 if [ ! -f ".streamlit/secrets.toml" ]; then
     echo "Creating organization and API token..."
     org_output=$(python scripts/create_organization.py Skyvern-Open-Source)

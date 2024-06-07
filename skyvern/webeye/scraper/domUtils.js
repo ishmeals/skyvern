@@ -811,7 +811,7 @@ async function buildTreeFromBody(frame = "main.frame", open_select = false) {
     // if element is an "a" tag and has a target="_blank" attribute, remove the target attribute
     // We're doing this so that skyvern can do all the navigation in a single page/tab and not open new tab
     if (element.tagName.toLowerCase() === "a") {
-      if (element.getAttribute("target") === "_blank") {
+      if (element.getAttribute("target").includes("blank")) {
         element.removeAttribute("target");
       }
     }

@@ -73,8 +73,7 @@ class BackgroundTaskExecutor(AsyncExecutor):
         context.organization_id = organization_id
         context.max_steps_override = max_steps_override
 
-        background_tasks.add_task(
-            app.agent.execute_step,
+        await app.agent.execute_step(
             organization,
             task,
             step,
@@ -95,8 +94,7 @@ class BackgroundTaskExecutor(AsyncExecutor):
             "Executing workflow using background task executor",
             workflow_run_id=workflow_run_id,
         )
-        background_tasks.add_task(
-            app.WORKFLOW_SERVICE.execute_workflow,
+        await app.WORKFLOW_SERVICE.execute_workflow(
             workflow_run_id=workflow_run_id,
             api_key=api_key,
         )

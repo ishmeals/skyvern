@@ -1348,34 +1348,44 @@ async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function isVisible(e) {
-    return !!( e.offsetWidth || e.offsetHeight || e.getClientRects().length );
-}
-
-function getVisibleTextInputCount(wind) {
-  let ans = 0
-
-  for (let frame of wind.frames()) {
-    ans += getVisibleTextInputCount(frame);
-  }
-
-  document.querySelectorAll("input, textarea, [contenteditable]").forEach((e) => {
-    ans += isVisible(e);
-  });
-
-  return ans;
-}
-
-function getVisiblePasteInputCount(wind) {
-  let ans = 0
-
-  for (let frame of wind.frames()) {
-    ans += getVisiblePasteInputCount(frame);
-  }
-
-  document.querySelectorAll('[contenteditable]').forEach((e) => {
-    ans += isVisible(e);
-  });
-
-  return ans;
-}
+//function countElements(wind) {
+//  let ans = 0
+//
+//  for (let i = 0; i < wind.frames.length; i++) {
+//    ans += getVisibleTextInputCount(wind.frames[i]);
+//  }
+//
+//  window.document.querySelectorAll("input, textarea, [contenteditable]").forEach((e) => {
+//    ans += isElementVisible(e);
+//  });
+//
+//  return ans;
+//}
+//
+//function getVisibleTextInputCount(wind) {
+//  let ans = 0
+//
+//  for (let i = 0; i < wind.frames.length; i++) {
+//    ans += getVisibleTextInputCount(wind.frames[i]);
+//  }
+//
+//  window.document.querySelectorAll("input, textarea, [contenteditable]").forEach((e) => {
+//    ans += isElementVisible(e);
+//  });
+//
+//  return ans;
+//}
+//
+//function getVisiblePasteInputCount(wind) {
+//  let ans = 0
+//
+//  for (let frame of wind.frames()) {
+//    ans += getVisiblePasteInputCount(frame);
+//  }
+//
+//  document.querySelectorAll('[contenteditable]').forEach((e) => {
+//    ans += isVisible(e);
+//  });
+//
+//  return ans;
+//}

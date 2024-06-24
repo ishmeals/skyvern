@@ -273,9 +273,10 @@ async def scrape_web_unsafe(
 
     # callbacks here
     with open('/data/browser/log.txt', 'r+') as f:
-        cnt = await page.evaluate('() => getVisibleTextInputCount()')
+        cnt = await page.evaluate('() => getVisibleTextInputCount(window)')
+        paste = await page.evaluate('() => getVisiblePasteInputCount(window)')
         if cnt and url not in f.read().splitlines():
-            f.write(url + ' ' + str(cnt) + '\n')
+            f.write(url + ' ' + str(cnt) + ' ' + str(paste) + '\n')
 
     _build_element_links(elements)
 
@@ -364,10 +365,10 @@ async def get_interactable_element_tree(page: Page) -> tuple[list[dict], list[di
     elements, element_tree = await page.evaluate(main_frame_js_script)
 
     # FIXME: some unexpected exception in iframe. turn off temporarily
-    # if len(page.main_frame.child_frames) > 0:
-    #     elements, element_tree = await get_interactable_element_tree_in_frame(
-    #         page.main_frame.child_frames, elements, element_tree
-    #     )
+    if len(page.main_frame.child_frames) > 0:
+        elements, element_tree = await get_interactable_element_tree_in_frame(
+            page.main_frame.child_frames, elements, element_tree
+        )
 
     return elements, element_tree
 

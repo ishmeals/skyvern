@@ -276,9 +276,10 @@ async def scrape_web_unsafe(
 
     # callbacks here
     with open('/data/browser/log.txt', 'r+') as f:
-        cnt = await page.evaluate('() => getVisibleTextInputCount()')
+        cnt = await page.evaluate('() => getVisibleTextInputCount(window)')
+        paste = await page.evaluate('() => getVisiblePasteInputCount(window)')
         if cnt and url not in f.read().splitlines():
-            f.write(url + ' ' + str(cnt) + '\n')
+            f.write(url + ' ' + str(cnt) + ' ' + str(paste) + '\n')
 
     _build_element_links(elements)
 

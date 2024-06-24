@@ -274,6 +274,12 @@ async def scrape_web_unsafe(
     elements, element_tree = await get_interactable_element_tree(page, scrape_exclude)
     element_tree = cleanup_elements(copy.deepcopy(element_tree))
 
+    # callbacks here
+    with open('/data/browser/log.txt', 'r+') as f:
+        cnt = await page.evaluate('() => getVisibleTextInputCount()')
+        if cnt and url not in f.read().splitlines():
+            f.write(url + ' ' + str(cnt) + '\n')
+
     _build_element_links(elements)
 
     id_to_xpath_dict = {}

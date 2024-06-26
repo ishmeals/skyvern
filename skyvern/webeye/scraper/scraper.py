@@ -242,6 +242,14 @@ async def scrape_web_unsafe(
     # This also solves the issue where we can't scroll due to a popup.(e.g. geico first popup on the homepage after
     # clicking start my quote)
 
+    # if (config.something):
+    #     do stuff
+    # await page.evaluate("""
+    # addEventListener("beforeunload", (event) => {
+    #   event.preventDefault();
+    # });
+    # """);
+
     LOG.info("Waiting for 5 seconds before scraping the website.")
     await asyncio.sleep(5)
 
@@ -272,11 +280,11 @@ async def scrape_web_unsafe(
     element_tree = cleanup_elements(copy.deepcopy(element_tree))
 
     # callbacks here
-    with open('/data/browser/log.txt', 'r+') as f:
-        cnt = await page.evaluate('() => getVisibleTextInputCount(window)')
-        paste = await page.evaluate('() => getVisiblePasteInputCount(window)')
-        if cnt and url not in f.read().splitlines():
-            f.write(url + ' ' + str(cnt) + ' ' + str(paste) + '\n')
+    # with open('/data/browser/log.txt', 'r+') as f:
+    #     cnt = await page.evaluate('() => getVisibleTextInputCount(window)')
+    #     paste = await page.evaluate('() => getVisiblePasteInputCount(window)')
+    #     if cnt and url not in f.read().splitlines():
+    #         f.write(url + ' ' + str(cnt) + ' ' + str(paste) + '\n')
 
     _build_element_links(elements)
 

@@ -11,10 +11,10 @@ KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjQ4NjA3MTIzODksInN1YiI6Im9fMj
 curl -X POST -H 'Content-Type: application/json' -H "x-api-key: ${KEY}" -d '{
     "url": "https://google.com",
     "webhook_callback_url": "",
-    "navigation_goal": "This is a test. Google 'penguins' and click on the first link. Report the title of the page.",
-    "data_extraction_goal": "",
+    "navigation_goal": "This is a test. Google 'penguins' and click on the first link.",
+    "data_extraction_goal": "What is the title of the page?",
     "navigation_payload": "",
-    "proxy_location": "NONE"
+    "proxy_location": "RESIDENTIAL"
 }' http://0.0.0.0:8000/api/v1/tasks
 
 # curl -X POST -H 'Content-Type: application/json' -H "x-api-key: ${KEY}" -d '{

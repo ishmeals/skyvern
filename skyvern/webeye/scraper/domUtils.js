@@ -683,17 +683,7 @@ async function buildTreeFromBody(frame = "main.frame", open_select = false) {
     var element_id = element.getAttribute("unique_id") ?? uniqueId();
     var elementTagNameLower = element.tagName.toLowerCase();
     element.setAttribute("unique_id", element_id);
-<<<<<<< HEAD
 
-=======
-    // if element is an "a" tag and has a target="_blank" attribute, remove the target attribute
-    // We're doing this so that skyvern can do all the navigation in a single page/tab and not open new tab
-    if (element.tagName.toLowerCase() === "a") {
-      if (element.getAttribute("target") && element.getAttribute("target").includes("blank")) {
-        element.removeAttribute("target");
-      }
-    }
->>>>>>> 9e5dbf099a0a6f20c8dfa219eb9750085b6a4eef
     const attrs = {};
     for (const attr of element.attributes) {
       var attrValue = attr.value;
@@ -1240,7 +1230,6 @@ function createHintMarkersForGroups(groups) {
       hintMarker.element.innerHTML = hintMarker.hintString.toUpperCase();
     } catch (e) {
       // Ensure trustedTypes is available
-<<<<<<< HEAD
       if (typeof trustedTypes !== "undefined") {
         const escapeHTMLPolicy = trustedTypes.createPolicy("default", {
           createHTML: (string) => string,
@@ -1248,13 +1237,6 @@ function createHintMarkersForGroups(groups) {
         hintMarker.element.innerHTML = escapeHTMLPolicy.createHTML(
           hintMarker.hintString.toUpperCase(),
         );
-=======
-      if (typeof trustedTypes !== 'undefined') {
-        const escapeHTMLPolicy = trustedTypes.createPolicy("default", {
-          createHTML: (string) => string,
-        });
-        hintMarker.element.innerHTML = escapeHTMLPolicy.createHTML(hintMarker.hintString.toUpperCase());
->>>>>>> 9e5dbf099a0a6f20c8dfa219eb9750085b6a4eef
       } else {
         console.error("trustedTypes is not supported in this environment.");
       }

@@ -882,7 +882,7 @@ class ForgeAgent:
         for scrape_type in SCRAPE_TYPE_ORDER:
             try:
                 scraped_page = await self._scrape_with_type(
-                    task=task, step=step, browser_state=browser_state, scrape_type=scrape_type, # step.order
+                    task=task, step=step, browser_state=browser_state, scrape_type=scrape_type,
                 )
                 break
             except FailedToTakeScreenshot as e:

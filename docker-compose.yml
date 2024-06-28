@@ -22,11 +22,7 @@ services:
 
   skyvern:
     build: .
-<<<<<<< HEAD
     # image: public.ecr.aws/skyvern/skyvern:latest
-=======
-    # image: public.ecr.aws/t6d4b5t4/skyvern:latest
->>>>>>> 0d20ea8 (initial)
     restart: on-failure
     # comment out if you want to externally call skyvern API
     ports:

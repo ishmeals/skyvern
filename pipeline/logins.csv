@@ -1,0 +1,5 @@
+url,task_id,status,extracted_information,failure_reason,cost
+google.com,tsk_274194306262852722,completed,"{""status"": ""LOGGED_IN""}",\N,0.15584
+github.com,tsk_274199059489398426,completed,\N,\N,0.131945
+hackmd.io,tsk_274202199188164066,completed,"{""status"": ""CAPTCHA"", ""url"": ""https://hackmd.io/join?email=hulk.skyvern%40gmail.com"", ""email"": ""hulk.skyvern@gmail.com""}",\N,0.099945
+hackmd.io,tsk_274203526132079426,completed,"{""status"": ""CAPTCHA""}",\N,0.099265

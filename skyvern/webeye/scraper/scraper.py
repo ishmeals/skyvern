@@ -387,19 +387,12 @@ async def get_interactable_element_tree(
     main_frame_js_script = "async () => await buildTreeFromBody('main.frame', true)"
     elements, element_tree = await page.evaluate(main_frame_js_script)
 
-<<<<<<< HEAD
     if len(page.main_frame.child_frames) > 0:
         elements, element_tree = await get_interactable_element_tree_in_frame(
             page.main_frame.child_frames,
             elements,
             element_tree,
             scrape_exclude=scrape_exclude,
-=======
-    # FIXME: some unexpected exception in iframe. turn off temporarily
-    if len(page.main_frame.child_frames) > 0:
-        elements, element_tree = await get_interactable_element_tree_in_frame(
-            page.main_frame.child_frames, elements, element_tree
->>>>>>> 8118ce70584713ea597f9ae86e81a3ecdc7e451d
         )
 
     return elements, element_tree
